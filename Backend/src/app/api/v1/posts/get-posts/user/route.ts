@@ -13,7 +13,7 @@ export default async function Get_User_Posts(req: Request, res: Response) {
     try {
         const posts = await Post_Model.find({ user: email });
 
-        res.json({ success: true, message: "User Posts fetched successfully", posts });
+        res.json({ success: true, message: "User Posts fetched successfully", posts: posts.reverse() });
         return;
     } catch (error) {
         res.status(500).json({ success: false, message: "Internal Server Error" });

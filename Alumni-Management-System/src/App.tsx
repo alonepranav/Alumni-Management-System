@@ -12,6 +12,7 @@ import Alumni_Event from './app/alumni-event/Alumni_Event';
 import StudentProvider from './context/StudentContext';
 import AlumniProvider from './context/AlumniContext';
 import My_Posts from './app/posts/my-posts/My_Posts';
+import PostLayout from './app/posts/PostLayout';
 import Gallery from './app/gallery/Gallery';
 import Contact from './app/contact/Contact';
 import { Toaster } from 'react-hot-toast';
@@ -22,18 +23,18 @@ import NotFound from './app/NotFound';
 import Posts from './app/posts/Posts';
 import Index from './app/Index';
 import './App.css';
-import PostLayout from './app/posts/PostLayout';
+import AdminLayout from './app/ams-admin/AdminLayout';
+import Admin_Auth_Page from './app/ams-admin/@auth/Admin_Auth_Page';
+import Index_Layout from './app/Index_Layout';
 
 
 function App() {
   return (
-    <>
-      <AlumniProvider>
-        <StudentProvider>
-          <BrowserRouter>
-            <Navbar />
-            <Routes>
-
+    <AlumniProvider>
+      <StudentProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route Component={Index_Layout}>
               <Route path='/' Component={Index} />
 
               {/* Student */}
@@ -59,17 +60,23 @@ function App() {
               <Route path='/posts' Component={PostLayout}>
                 <Route path='create-post' Component={Create_Post} />
                 <Route path='my-posts' Component={My_Posts} />
+                <Route path='my-posts' Component={My_Posts} />
               </Route>
+            </Route>
 
-              <Route path='*' Component={NotFound} />
+            {/* Admin */}
+            <Route path='/ams-admin' Component={AdminLayout}>
+              <Route index Component={Admin_Auth_Page} />
 
-            </Routes>
-            <Toaster position='top-center' />
-            <Footer />
-          </BrowserRouter>
-        </StudentProvider>
-      </AlumniProvider>
-    </>
+            </Route>
+
+            <Route path='*' Component={NotFound} />
+
+          </Routes>
+          <Toaster position='top-center' />
+        </BrowserRouter>
+      </StudentProvider>
+    </AlumniProvider>
   )
 }
 

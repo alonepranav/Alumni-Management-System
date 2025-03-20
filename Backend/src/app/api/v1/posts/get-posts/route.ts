@@ -7,7 +7,7 @@ export default async function Get_Posts(req: Request, res: Response) {
     try {
         const posts = await Post_Model.find({});
 
-        res.json({ success: true, message: "Post fetched successfully", posts });
+        res.json({ success: true, message: "Post fetched successfully", posts: posts.reverse() });
         return;
 
     } catch (error) {

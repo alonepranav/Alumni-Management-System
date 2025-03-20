@@ -10,7 +10,6 @@ export default function PostLayout() {
         return <Outlet />
 
     return <LoginToPost />
-
 }
 
 const LoginToPost = () => {

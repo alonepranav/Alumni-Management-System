@@ -19,7 +19,7 @@ export default function Navbar() {
                 <div className="items-center justify-between hidden md:flex" >
                     <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg gap-1 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
                         <Link to="/" className={`block py-1 px-4 ${pathname.endsWith("/") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>Home</Link>
-                        <Link to="/posts" className={`block py-1 px-4 ${pathname.endsWith("/posts") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>Posts</Link>
+                        <Link to="/posts" className={`block py-1 px-4 ${pathname.includes("/posts") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>Posts</Link>
                         <Link to="/event" className={`block py-1 px-4 ${pathname.endsWith("/event") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>Event</Link>
                         <Link to="/about" className={`block py-1 px-4 ${pathname.endsWith("/about") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>About</Link>
                         <Link to="/gallery" className={`block py-1 px-4 ${pathname.endsWith("/gallery") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>Gallery</Link>

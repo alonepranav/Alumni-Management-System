@@ -1,7 +1,7 @@
 export default function AboutUs() {
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 py-10 py-24 w-full">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 py-24 w-full">
             <div className="bg-white shadow-lg rounded-lg px-8 py-10 max-w-6xl text-center">
                 <h1 className="text-4xl font-bold text-blue-500 mb-6">About Us</h1>
 

@@ -20,9 +20,6 @@ export default function Memories() {
         <div className="py-12">
             <br />
             <br />
-            <br />
-            <br />
-            <br />
             <h2 className="text-3xl font-semibold text-center mb-6">Memories with Alumni</h2>
             <br />
             <br />

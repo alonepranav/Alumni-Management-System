@@ -27,26 +27,23 @@ export default function Index() {
             </div>
 
             {/* Features Section */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 max-w-5xl mx-auto">
-                {/* Feature 1 */}
-                <div className="bg-white shadow-lg p-6 rounded-lg text-center border border-slate-300 hover:shadow-2xl">
-                    <img src="/home/n.jpg" alt="Networking" className="w-full h-40 object-cover rounded-md" />
+            <div className="flex justify-center items-center gap-10">
+                <div className="bg-white p-6 w-80 rounded-lg text-center border border-slate-300 hover:shadow-2xl hover:shadow-gray-300">
+                    <img src="/home/n.jpg" alt="Networking" className="border-slate-100 border w-full h-40 object-cover rounded-md" />
                     <h3 className="text-xl font-semibold mt-4">Networking</h3>
-                    <p className="text-gray-600">Connect with alumni and expand your professional network.</p>
+                    <p className="text-gray-600 mt-2">Connect with alumni and expand your professional network.</p>
                 </div>
 
-                {/* Feature 2 */}
-                <div className="bg-white shadow-lg p-6 rounded-lg text-center border border-slate-300 hover:shadow-2xl">
-                    <img src="/home/m.jpg" alt="Mentorship" className="w-full h-40 object-cover rounded-md" />
+                <div className="bg-white p-6 w-80 rounded-lg text-center border border-slate-300 hover:shadow-2xl hover:shadow-gray-300">
+                    <img src="/home/m.jpg" alt="Mentorship" className="border-slate-100 border w-full h-40 object-cover rounded-md" />
                     <h3 className="text-xl font-semibold mt-4">Mentorship</h3>
-                    <p className="text-gray-600">Alumni can guide students in career growth and skill development.</p>
+                    <p className="text-gray-600 mt-2">Alumni can guide students in career growth and skill development.</p>
                 </div>
 
-                {/* Feature 3 */}
-                <div className="bg-white shadow-lg p-6 rounded-lg text-center border border-slate-300 hover:shadow-2xl">
-                    <img src="/home/r.jpg" alt="Events" className="w-full h-40 object-cover rounded-md" />
+                <div className="bg-white p-6 w-80 rounded-lg text-center border border-slate-300 hover:shadow-2xl hover:shadow-gray-300">
+                    <img src="/home/r.jpg" alt="Events" className="border-slate-100 border w-full h-40 object-cover rounded-md" />
                     <h3 className="text-xl font-semibold mt-4">Events & Reunions</h3>
-                    <p className="text-gray-600">Stay updated with alumni meetups and career events.</p>
+                    <p className="text-gray-600 mt-2">Stay updated with alumni meetups and career events.</p>
                 </div>
             </div>
 

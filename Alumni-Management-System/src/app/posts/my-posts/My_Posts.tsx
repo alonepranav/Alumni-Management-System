@@ -1,21 +1,13 @@
-import axios from "axios";
-import { useEffect, useState } from "react"
-import Routes from "../../../constants/Routes";
-import { useAlumni } from "../../../context/AlumniContext";
 import { useStudent } from "../../../context/StudentContext";
+import { useAlumni } from "../../../context/AlumniContext";
+import MyPostBox from "../../../components/MyPost_Box";
+import PostType from "../../../types/Post.types";
 import Loader from "../../../components/Loader";
+import Routes from "../../../constants/Routes";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
 
-type PostType = {
-    author: "student" | "alumni";
-    title: string;
-    user: string;
-    content: string;
-    likes: string[];
-    comments: [{ user: string; text: string; }],
-    time: string;
-    imageId: string;
-}
 
 export default function My_Posts() {
     const { alumni } = useAlumni();
@@ -29,18 +21,22 @@ export default function My_Posts() {
     const GetPosts = async () => {
         try {
             const res = await axios.get(Routes.Get_User_Posts(alumni ? alumni.id : student ? student.id : "none"));
-
             if (res.data.success) {
                 setPosts(res.data.posts);
                 setloading(false);
-                toast.success(res.data.message);
             }
             else {
                 toast.error(res.data.message);
                 setloading(false);
             }
         } catch (error) { }
-        finally { }
+    }
+
+    const DeletePosts = async (id: string) => {
+        try {
+            const res = await axios.delete(Routes.Delete_Post(id));
+            if (res.data.success) setPosts(posts.filter(a => a._id != id));
+        } catch (error) { }
     }
 
     useEffect(() => {
@@ -48,23 +44,14 @@ export default function My_Posts() {
     }, [])
 
     return (
-        <div className="flex justify-center items-center min-h-screen w-screen py-24 px-[30rem]">
+        <div className="flex justify-center min-h-screen w-screen py-24 px-[30rem]">
             <div className="relative w-full h-full">
                 {loading ? <div className="h-full w-full flex justify-center items-center"><Loader color="black" /></div> : null}
 
+                <p className="font-semibold text-2xl p-2 bg-slate-50 border border-neutral-200 rounded-md mb-5 sticky z-10 top-20">My Posts</p>
                 {
-                    posts.map((a) => {
-                        return <div className="px-5 py-3 border border-slate-200 rounded-lg mb-4">
-                            <p className="text-xl font-semibold">{a.title} - {new Date(a.time).toLocaleDateString()}</p>
-
-                            {a.imageId == "none" ? null :
-                                <div className="mt-3 flex justify-center w-full bg-slate-50 rounded-xl p-2">
-                                    <img src={a.imageId} className="h-80" />
-                                </div>
-                            }
-                            <p className="mt-3">{a.content}</p>
-                        </div>
-                    })
+                    posts.length == 0 ? <div className="text-center font-semibold text-xl pt-10">No post present...</div> :
+                        posts.map((a, i) => <MyPostBox {...{ data: a, DeletePosts }} key={i} />)
                 }
             </div>
         </div>

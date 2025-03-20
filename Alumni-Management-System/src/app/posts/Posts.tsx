@@ -1,5 +1,6 @@
 import { useStudent } from "../../context/StudentContext";
 import { useAlumni } from "../../context/AlumniContext";
+import PostType from "../../types/Post.types";
 import Loader from "../../components/Loader";
 import Routes from "../../constants/Routes";
 import { useEffect, useState } from "react";
@@ -14,15 +15,6 @@ export default function Posts() {
     const { student } = useStudent();
     const { alumni } = useAlumni();
 
-    type PostType = {
-        author: "student" | "alumni";
-        title: string;
-        user: string;
-        content: string;
-        time: string;
-        imageId: string;
-    }
-
     const GetPosts = async () => {
         try {
             const res = await axios.get(Routes.Get_Posts());
@@ -36,7 +28,6 @@ export default function Posts() {
                 setloading(false);
             }
         } catch (error) { }
-        finally { }
     }
 
     useEffect(() => {
@@ -63,25 +54,28 @@ export default function Posts() {
                     {loading ? <div className="h-full w-full flex justify-center items-center"><Loader color="black" /></div> : null}
 
                     {
-                        posts.map((a) => {
-                            return <div className="px-5 py-3 border border-slate-200 rounded-lg mb-4">
-                                <div className="flex gap-2 items-center mb-3">
-                                    <p className="capitalize text-white bg-slate-800 rounded-full w-fit px-3 py-1 text-xs">{a.author}</p>
-                                    <p className="text-sm">/  {new Date(a.time).toLocaleDateString()}</p>
-                                </div>
-                                <p className="text-xl font-semibold">{a.title}</p>
-
-                                {a.imageId == "none" ? null :
-                                    <div className="mt-3 flex justify-center w-full bg-slate-50 rounded-xl p-2">
-                                        <img src={a.imageId} className="h-80" />
-                                    </div>
-                                }
-                                <p className="mt-3">{a.content}</p>
-                            </div>
-                        })
+                        posts.map((a, i) => <SinglePost_Component key={i} data={a} />)
                     }
                 </div>
             </div>
         </div>
     )
+}
+
+const SinglePost_Component = ({ data }: { data: PostType }) => {
+
+    return <div className="px-5 py-3 border border-slate-200 rounded-lg mb-4">
+        <div className="flex gap-2 items-center mb-3">
+            <p className="capitalize text-white bg-slate-800 rounded-full w-fit px-3 py-1 text-xs">{data.author}</p>
+            <p className="text-sm">/  {new Date(data.time).toLocaleDateString()}</p>
+        </div>
+        <p className="text-xl font-semibold">{data.title}</p>
+
+        {data.imageId == "none" ? null :
+            <div className="mt-3 flex justify-center w-full bg-slate-50 rounded-xl p-2">
+                <img src={data.imageId} className="h-80" />
+            </div>
+        }
+        <p className="mt-3">{data.content}</p>
+    </div>
 }

@@ -18,6 +18,7 @@ import Delete_Post from './app/api/v1/posts/delete-post/route';
 import Like_Post from './app/api/v1/posts/react-post/like-post/route';
 import Dislike_Post from './app/api/v1/posts/react-post/dislike-post/route';
 import Create_Post from './app/api/v1/posts/create-post/route';
+import Admin_Login from './app/api/v1/auth/admin/login/route';
 
 const Routes = express.Router();
 
@@ -34,6 +35,9 @@ Routes.post('/api/v1/auth/alumni/register', Alumni_Register);
 Routes.post('/api/v1/auth/alumni/login', Alumni_Login);
 Routes.post('/api/v1/auth/alumni/login/google', Alumni_Login_Google);
 Routes.post('/api/v1/auth/alumni/verify', Alumni_Verify);
+
+// Admin
+Routes.post('/api/v1/auth/admin/login', Admin_Login);
 
 // Alumni - Utils
 Routes.post('/api/v1/alumni/utils/update-photo', Admin_Update_Photo);
