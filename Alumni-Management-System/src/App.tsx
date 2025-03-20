@@ -16,8 +16,6 @@ import PostLayout from './app/posts/PostLayout';
 import Gallery from './app/gallery/Gallery';
 import Contact from './app/contact/Contact';
 import { Toaster } from 'react-hot-toast';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
 import AboutUs from './app/about/About';
 import NotFound from './app/NotFound';
 import Posts from './app/posts/Posts';

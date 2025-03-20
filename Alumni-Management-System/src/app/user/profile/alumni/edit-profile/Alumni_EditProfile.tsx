@@ -2,7 +2,6 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useAlumni } from "../../../../../context/AlumniContext";
 import Loader from "../../../../../components/Loader";
 import Routes from "../../../../../constants/Routes";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -22,20 +21,19 @@ const Alumni_EditProfile = () => {
     });
 
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     useEffect(() => {
-        const getData = async () => {
-            const res = await axios.get(Routes.Alumni_GetData(alumni.email));
-            if (res.data.success) {
-                setFormData({ ...res.data.user });
-                setLoading(false);
-            }
-        };
+        // const getData = async () => {
+        //     const res = await axios.get(Routes.Alumni_GetData(alumni.email));
+        //     if (res.data.success) {
+        //         setFormData({ ...res.data.user });
+        //         setLoading(false);
+        //     }
+        // };
 
         setFormData({
             name: alumni.name,

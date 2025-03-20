@@ -1,11 +1,9 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { useAlumni } from "../../../../../context/AlumniContext";
+import { useStudent } from "../../../../../context/StudentContext";
 import Loader from "../../../../../components/Loader";
 import Routes from "../../../../../constants/Routes";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useStudent } from "../../../../../context/StudentContext";
 
 
 const Student_EditProfile = () => {
@@ -20,20 +18,19 @@ const Student_EditProfile = () => {
     });
 
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
-
+    
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     useEffect(() => {
-        const getData = async () => {
-            const res = await axios.get(Routes.Student_GetData(student.email));
-            if (res.data.success) {
-                setFormData({ ...res.data.user });
-                setLoading(false);
-            }
-        };
+        // const getData = async () => {
+        //     const res = await axios.get(Routes.Student_GetData(student.email));
+        //     if (res.data.success) {
+        //         setFormData({ ...res.data.user });
+        //         setLoading(false);
+        //     }
+        // };
 
         setFormData({
             name: student.name,
