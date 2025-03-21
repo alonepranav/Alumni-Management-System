@@ -9,7 +9,7 @@ export default async function Post_Comment(req: Request, res: Response) {
         res.status(200).json({ success: false, message: "Missing required fields." });
         return;
     }
-f
+    
     try {
         const post = await Post_Model.findById({ _id: postId });
 
