@@ -81,8 +81,7 @@ export default async function Alumni_Register(req: Request, res: Response) {
 
         res.status(201).json({ success: true, message: "Alumni registered successfully" });
         return;
-    } catch (error) {
-        console.log(error);
+    } catch (error) { 
         res.status(500).json({ success: false, message: "Server error" });
         return;
     }

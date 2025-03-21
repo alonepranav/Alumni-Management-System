@@ -20,7 +20,7 @@ export default function AdminProvider({ children }: { children: ReactNode }) {
     return (
         <AdminContext.Provider value={{ admin, setAdmin }}>
             {
-                !admin ? children : <Admin_Login />
+                admin ? children : <Admin_Login />
             }
         </AdminContext.Provider>
     );

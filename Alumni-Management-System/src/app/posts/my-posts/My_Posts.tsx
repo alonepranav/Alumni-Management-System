@@ -44,7 +44,7 @@ export default function My_Posts() {
     }, [])
 
     return (
-        <div className="flex justify-center min-h-screen w-screen py-24 px-[30rem]">
+        <div className="flex justify-center min-h-screen w-screen py-24 px-80">
             <div className="relative w-full h-full">
                 {loading ? <div className="h-full w-full flex justify-center items-center"><Loader color="black" /></div> : null}
 

@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import mongoose from "mongoose"
 import { APP_MONGODB_STRING } from "../constants";
 

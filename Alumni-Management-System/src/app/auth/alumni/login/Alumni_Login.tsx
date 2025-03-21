@@ -28,8 +28,6 @@ export default function Alumni_Login() {
                 email: res.user.email,
             });
 
-            console.log(re)
-
             if (re.data.success) {
                 localStorage.clear();
                 localStorage.setItem(

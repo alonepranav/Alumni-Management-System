@@ -25,7 +25,6 @@ const Routes = {
     Like_Post: () => BACKEND + '/api/v1/posts/react-post/like-post',
     Dislike_Post: () => BACKEND + '/api/v1/posts/react-post/dislike-post',
     Create_Post: () => BACKEND + '/api/v1/posts/create-post',
-
 }
 
 

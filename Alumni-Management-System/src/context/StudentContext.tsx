@@ -27,7 +27,6 @@ export default function StudentProvider({ children }: { children: ReactNode }) {
         try {
             const res = await axios.post(Routes.Student_Verify(), { token, email });
             if (res.data.success) {
-                // console.log(res.data.user)
                 setStudent(res.data.user);
             } else {
                 setStudent(null);

@@ -1,13 +1,10 @@
 import { Request, Response } from "express";
-import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Student_Model from "../../../../../../../models/Student.model";
 
 export default async function Student_Login_Google(req: Request, res: Response) {
     try {
         const { email } = req.body;
-
-        console.log(email)
 
         if (!email) {
             res.status(200).json({ success: false, message: "Email and password are required." });
@@ -42,7 +39,6 @@ export default async function Student_Login_Google(req: Request, res: Response) 
         return;
 
     } catch (error) {
-        console.log(error)
         res.status(500).json({ success: false, message: "Server error" });
         return;
     }
