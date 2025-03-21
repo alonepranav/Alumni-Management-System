@@ -54,7 +54,7 @@ export default function Admin_Events() {
                 </div>
             )}
 
-            <div className="flex flex-wrap gap-6 items-start flex-col px-60">
+            <div className="flex flex-wrap gap-6 items-start flex-col px-2 md:px-60">
                 {[...events].reverse().map((event, i) => <EventBox key={i} event={event} />)}
             </div>
         </div>

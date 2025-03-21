@@ -5,6 +5,8 @@ import Routes from "../../../../constants/Routes";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useStudent } from "../../../../context/StudentContext";
 
 
 export default function Student_Login() {
@@ -13,6 +15,9 @@ export default function Student_Login() {
         password: "",
     });
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+
+    const { setStudent } = useStudent();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,8 +45,13 @@ export default function Student_Login() {
                         image: re.data.user.profileImage
                     })
                 );
+
+                setStudent({
+                    ...re.data.user,
+                    token: re.data.token
+                });
                 toast.success(re.data.message);
-                window.location.replace("/");
+                navigate("/");
             } else {
                 toast.error(re.data.message);
             }
@@ -61,7 +71,21 @@ export default function Student_Login() {
                 email: formData.email, password: formData.password
             });
             if (re.data.success) {
+                localStorage.setItem(
+                    "student",
+                    JSON.stringify({
+                        token: re.data.token,
+                        email: formData.email,
+                        name: re.data.user.name,
+                        image: re.data.user.profileImage
+                    })
+                );
+                setStudent({
+                    ...re.data.user,
+                    token: re.data.token
+                });
                 toast.success("Login Successfull");
+                navigate("/");
             }
             else {
                 toast.error(re.data.message);
@@ -76,9 +100,9 @@ export default function Student_Login() {
     return (
         <div className="flex h-screen w-screen justify-center items-center">
             <div className="min-h-screen py-6 flex flex-col justify-center sm:py-12">
-                <div className="relative py-3 w-[40rem] sm:mx-auto">
+                <div className="relative py-3 w-full md:w-[40rem] mx-auto">
 
-                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-sky-400 shadow-lg transform sm:-rotate-0 sm:rounded-3xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-sky-400 shadow-lg rounded-2xl"></div>
 
                     {
                         loading ? <div className="absolute z-20 h-full w-full flex justify-center items-center bg-black/35 rounded-3xl top-0">
@@ -86,7 +110,7 @@ export default function Student_Login() {
                         </div> : null
                     }
 
-                    <div className="relative p-10 bg-white shadow-lg border border-slate-200 sm:rounded-3xl">
+                    <div className="relative p-10 bg-white shadow-lg border border-slate-200">
                         <div className="mx-auto">
                             <h1 className="text-2xl font-semibold">Login - Student</h1>
                             <form onSubmit={handleSubmit} className="divide-y divide-gray-200 mt-3">

@@ -5,6 +5,8 @@ import axios from "axios";
 import Routes from "../../../../constants/Routes";
 import toast from "react-hot-toast";
 import Loader from "../../../../components/Loader";
+import { useAlumni } from "../../../../context/AlumniContext";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Alumni_Login() {
@@ -14,10 +16,12 @@ export default function Alumni_Login() {
 
     const [loading, setLoading] = useState(false);
     const googleProvider = new GoogleAuthProvider();
+    const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+    const { setAlumni } = useAlumni();
 
     const loginWithGoogle = async () => {
         setLoading(true);
@@ -39,8 +43,13 @@ export default function Alumni_Login() {
                         image: re.data.user.profileImage
                     })
                 );
+
+                setAlumni({
+                    ...re.data.user,
+                    token: re.data.token
+                });
                 toast.success(re.data.message);
-                window.location.replace("/")
+                navigate("/")
             } else {
                 toast.error(re.data.message);
             }
@@ -49,18 +58,29 @@ export default function Alumni_Login() {
             setLoading(false);
         }
     };
-
-
+    
+    
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
+        
         try {
             setLoading(true);
             const re = await axios.post(Routes.Alumni_Login(), {
                 email: formData.email, password: formData.password
             });
             if (re.data.success) {
+                localStorage.setItem(
+                    "alumni",
+                    JSON.stringify({
+                        token: re.data.token,
+                        email: formData.email,
+                        name: re.data.user.name,
+                        image: re.data.user.profileImage
+                    })
+                );
+                setAlumni({ ...re.data.user, token: re.data.token });
                 toast.success(re.data.message);
+                navigate("/")
             }
             else {
                 toast.error(re.data.message);
@@ -77,7 +97,7 @@ export default function Alumni_Login() {
         <div className="flex h-screen w-screen justify-center items-center">
             <section className="bg-white flex flex-col">
                 <div className="flex justify-center items-center flex-grow py-12">
-                    <div className="relative border border-slate-200 rounded-xl p-8 w-[40rem] shadow-xl shadow-slate-300">
+                    <div className="relative border border-slate-200 rounded-xl p-8 w-full md:w-[40rem] shadow-xl shadow-slate-300">
                         {
                             loading ? <div className="absolute left-0 z-20 h-full w-full flex justify-center items-center bg-black/35 rounded-xl top-0">
                                 <Loader color="white" />

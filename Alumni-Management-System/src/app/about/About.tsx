@@ -28,7 +28,7 @@ export default function AboutUs() {
                     <div className="mt-6">
                         <h3 className="text-xl font-medium text-gray-800">Some Developers</h3>
                         <br />
-                        <div className="flex justify-center gap-6 mt-6">
+                        <div className="flex justify-center gap-10 flex-wrap mt-6">
                             {["Pranav", "Star", "Dark", "Aqua"].map((name, index) => (
                                 <div key={index} className="flex flex-col items-center">
                                     <img

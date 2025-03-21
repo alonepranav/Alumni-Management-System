@@ -8,8 +8,10 @@ import Admin_Gallery from './app/ams-admin/@auth/gallery/Admin_Gallery';
 import Alumni_Profile from './app/user/profile/alumni/Alumni_Profile';
 import Admin_Auth_Page from './app/ams-admin/@auth/Admin_Auth_Page';
 import Student_Login from './app/auth/student/login/Student_Login';
+import Admin_Events from './app/ams-admin/@auth/event/Admin_Event';
 import Alumni_Login from './app/auth/alumni/login/Alumni_Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AddEvent from './app/alumni-event/add-event/Add_Event';
 import Create_Post from './app/posts/create-post/Create_Post';
 import Alumni_Event from './app/alumni-event/Alumni_Event';
 import StudentProvider from './context/StudentContext';
@@ -25,9 +27,6 @@ import AboutUs from './app/about/About';
 import NotFound from './app/NotFound';
 import Posts from './app/posts/Posts';
 import Index from './app/Index';
-import './App.css';
-import AddEvent from './app/alumni-event/add-event/Add_Event';
-import Admin_Events from './app/ams-admin/@auth/event/Admin_Event';
 
 
 function App() {
@@ -70,8 +69,6 @@ function App() {
             {/* Admin */}
             <Route path='/ams-admin' Component={AdminLayout}>
               <Route index Component={Admin_Auth_Page} />
-
-
               <Route path='event' Component={Admin_Events} />
               <Route path='event/add-event' Component={AddEvent} />
               <Route path='gallery' Component={Admin_Gallery} />

@@ -77,8 +77,8 @@ export default function Student_Register() {
     };
 
     return (
-        <div className="flex justify-center items-center pb-28 pt-24">
-            <form onSubmit={handleSubmit} className="relative w-[40rem] mx-auto p-8 border border-slate-200 rounded-2xl shadow-xl shadow-slate-300">
+        <div className="flex justify-center items-center pb-28 pt-24 px-2">
+            <form onSubmit={handleSubmit} className="relative w-full md:w-[40rem] mx-auto p-5 md:p-8 border border-slate-200 rounded-2xl shadow-xl shadow-slate-300">
                 <p className="text-center font-semibold text-3xl mb-5">Student Register</p>
                 {
                     loading ? <div className="absolute z-20 h-full w-full flex justify-center items-center bg-black/35 rounded-3xl top-0 left-0">

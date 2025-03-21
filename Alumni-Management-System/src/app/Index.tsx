@@ -5,29 +5,29 @@ export default function Index() {
     return (
         <div className="min-h-screen">
             {/* Hero Section */}
-            <div className="h-[70vh] w-full bg-cover bg-center flex items-center justify-center relative"
+            <div className="h-[60vh] md:h-[70vh] w-full bg-cover bg-center flex items-center justify-center relative pt-14"
                 style={{ backgroundImage: "url('/all.jpeg')" }}
             >
                 {/* <div className="absolute inset-0 bg-gradient-to-b from-red-500/50 to-blue-500/50"></div> */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-black/80"></div>
 
-                <div className="relative z-10 text-white">
-                    <p className="text-5xl font-semibold">Welcome to Alumni Management System</p>
-                    <p className="text-center mt-7 text-2xl font-medium">Linking Yesterday's Students with Tomorrow's Leaders.</p>
+                <div className="relative z-10 text-white text-center">
+                    <p className="text-4xl md:text-5xl font-semibold">Welcome to Alumni Management System</p>
+                    <p className="text-center mt-7 text-xl md:text-2xl font-medium">Linking Yesterday's Students with Tomorrow's Leaders.</p>
                 </div>
             </div>
 
 
             {/* About Section */}
             <div className="py-16 px-6 max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl font-semibold mb-4">Connecting Alumni & Students</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold mb-4">Connecting Alumni & Students</h2>
                 <p className="text-gray-600">
                     Our system helps alumni stay connected, share experiences, and mentor students for a brighter future.
                 </p>
             </div>
 
             {/* Features Section */}
-            <div className="flex justify-center items-center gap-10">
+            <div className="flex justify-center items-center gap-10 flex-wrap">
                 <div className="bg-white p-6 w-80 rounded-lg text-center border border-slate-300 hover:shadow-2xl hover:shadow-gray-300">
                     <img src="/home/n.jpg" alt="Networking" className="border-slate-100 border w-full h-40 object-cover rounded-md" />
                     <h3 className="text-xl font-semibold mt-4">Networking</h3>

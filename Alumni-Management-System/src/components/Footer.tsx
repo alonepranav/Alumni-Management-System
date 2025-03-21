@@ -20,7 +20,7 @@ export default function Footer() {
                 <div>
                     <h3 className="text-xl font-semibold mb-4">Resources</h3>
                     <ul className="flex flex-col gap-2">
-                        <Link to="/events" className="w-fit hover:text-blue-600 font-semibold">📅 Events</Link>
+                        <Link to="/event" className="w-fit hover:text-blue-600 font-semibold">📅 Events</Link>
                         <Link to="/posts" className="w-fit hover:text-blue-600 font-semibold">📝 Blogs</Link>
                         <Link to="/gallery" className="w-fit hover:text-blue-600 font-semibold">🖼️ Gallery</Link>
                     </ul>

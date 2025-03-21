@@ -41,7 +41,7 @@ const Alumni_Register = () => {
         e.preventDefault();
         if (!formData.profileImage) return;
         setLoading(true);
-        
+
         try {
             const googleProvider = new GoogleAuthProvider();
             const gRes = await signInWithPopup(auth, googleProvider);
@@ -82,8 +82,8 @@ const Alumni_Register = () => {
     };
 
     return (
-        <div className="flex justify-center items-center py-20">
-            <div className="w-[40rem] mx-auto mt-10 px-6 py-8 border border-slate-200 bg-white shadow-lg shadow-slate-300 rounded-xl relative">
+        <div className="flex justify-center items-center py-20 px-2">
+            <div className="w-full md:w-[40rem] mx-auto mt-10 px-6 py-8 border border-slate-200 bg-white shadow-lg shadow-slate-300 rounded-xl relative">
                 <h2 className="text-2xl font-bold mb-4 text-center pb-5">Alumni Registration</h2>
                 {loading && (
                     <div className="absolute z-20 h-full w-full flex justify-center items-center bg-black/35 rounded-xl top-0 left-0">

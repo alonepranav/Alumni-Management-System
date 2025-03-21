@@ -18,24 +18,35 @@ export default function Posts() {
     const GetPosts = async () => {
         try {
             const res = await axios.get(Routes.Get_Posts());
-
             if (res.data.success) {
                 setPosts(res.data.posts);
-                setloading(false);
+                sessionStorage.setItem("_POST_DATA_", JSON.stringify(res.data.posts));
             }
             else {
                 toast.error(res.data.message);
-                setloading(false);
             }
         } catch (error) { }
+        finally {
+            setloading(false);
+        }
+    }
+
+    const CachedData = () => {
+        const r = sessionStorage.getItem("_POST_DATA_");
+        if (r) {
+            const e = JSON.parse(r);
+            setPosts(e as PostType[]);
+            setloading(false);
+        }
     }
 
     useEffect(() => {
+        CachedData();
         GetPosts();
     }, [])
 
     return (
-        <div className="pt-20 px-80 min-h-screen">
+        <div className="pt-20 px-2 md:px-80 min-h-screen">
             {
                 (student || alumni) ?
                     <div className="flex justify-end gap-6">
@@ -73,7 +84,7 @@ const SinglePost_Component = ({ data }: { data: PostType }) => {
 
         {data.imageId == "none" ? null :
             <div className="mt-3 flex justify-center w-full bg-slate-50 rounded-xl p-2">
-                <img src={data.imageId} className="h-80" />
+                <img src={data.imageId} className="h-60 md:h-80" />
             </div>
         }
         <p className="mt-3">{data.content}</p>

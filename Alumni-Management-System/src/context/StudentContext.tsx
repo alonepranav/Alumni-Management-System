@@ -11,6 +11,7 @@ interface Student {
     linkedin: string;
     bio: string;
     interests: string;
+    token: string;
 }
 
 interface StudentContextType {

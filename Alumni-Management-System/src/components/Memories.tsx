@@ -40,9 +40,6 @@ export default function Memories() {
             <br />
             <br />
             <br />
-            <br />
-            <br />
-            <br />
         </div>
     );
 }

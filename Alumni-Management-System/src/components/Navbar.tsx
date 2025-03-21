@@ -11,9 +11,9 @@ export default function Navbar() {
 
     return (
         <nav className="fixed w-screen z-20 top-0 start-0 border-b border-gray-200 bg-white">
-            <div className="flex justify-between items-center w-full px-32 h-16">
+            <div className="flex justify-between items-center w-full px-2 md:px-32 h-16">
                 <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">AMS</span>
+                    <span className="self-center text-2xl md:text-3xl font-semibold whitespace-nowrap dark:text-white">AMS</span>
                 </a>
 
                 <div className="items-center justify-between hidden md:flex" >

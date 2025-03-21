@@ -15,16 +15,27 @@ export default function Events() {
                 const querySnapshot = await getDocs(collection(appDatabase, "events"));
                 const eventData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as EventType));
                 setEvents(eventData);
+                sessionStorage.setItem("_EVENT_DATA_", JSON.stringify(eventData));
             } catch (error) { } finally {
                 setLoading(false);
             }
         };
 
+        const CachedData = () => {
+            const r = sessionStorage.getItem("_EVENT_DATA_");
+            if (r) {
+                const e = JSON.parse(r);
+                setEvents(e as EventType[]);
+                setLoading(false);
+            }
+        }
+
+        CachedData();
         fetchEvents();
     }, []);
 
     return (
-        <div className="min-h-screen w-screen py-24 px-20">
+        <div className="min-h-screen w-screen py-24 px-2 md:px-20">
             <h2 className="text-3xl font-medium text-center mb-10">Upcoming Events</h2>
 
             {
@@ -33,7 +44,7 @@ export default function Events() {
                     <p className="text-xl font-semibold">Getting posts ...</p>
                 </div>
             }
-            <div className="flex flex-wrap gap-6 items-start flex-col px-60">
+            <div className="flex flex-wrap gap-6 items-start flex-col md:px-60">
                 {[...events].reverse().map((event, i) => <EventBox event={event} key={i} />)}
             </div>
         </div>
@@ -53,7 +64,7 @@ const EventBox = ({ event }: { event: EventType }) => {
 
         <p className="text-gray-600">{event.description}</p>
 
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-col md:flex-row">
             <p className="text-gray-500 text-lg mt-2 border border-slate-400 rounded-md p-2 w-fit">Event Date : {new Date(event.date).toDateString()}</p>
             <p className="text-gray-500 text-lg mt-2 border border-slate-400 rounded-md p-2 w-fit">Venue : {event.venue}</p>
         </div>
