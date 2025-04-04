@@ -43,7 +43,10 @@ export default function User_Update_Profile_Photo({ profilePhoto, email, name, s
     };
 
     const handleUpload = async () => {
-        if (!file) return;
+        if (!file) {
+            toast('Please select image!', { icon: 'ℹ️' });
+            return;
+        }
         const storage = getStorage();
         const storageRef = ref(storage, `ams/${GetImageId()}`);
         setloading(true);
@@ -73,7 +76,7 @@ export default function User_Update_Profile_Photo({ profilePhoto, email, name, s
                 <p className="text-white font-semibold text-3xl text-center mt-4">{name}</p>
 
                 <div className="flex justify-center mt-8">
-                    <button className="font-semibold bg-white cursor-pointer mx-auto rounded-md w-48 flex justify-center py-2" onClick={handleUpload}>
+                    <button className="font-semibold bg-white cursor-pointer mx-auto rounded-md w-48 flex justify-center py-2" onClick={()=>handleUpload()}>
                         {loading ? <Loader size="25px" /> : "Update Profile Image"}
                     </button>
                 </div>

@@ -44,13 +44,13 @@ export default function Gallery() {
     return (
         <div className="min-h-screen pt-20 pb-28 px-6">
             <div className="max-w-6xl mx-auto text-center">
-                <h1 className="text-4xl font-bold text-blue-500 mb-6">Gallery</h1>
-                <p className="text-lg text-gray-700 mb-10">A collection of our best moments, achievements, and memories.</p>
+                <h1 className="text-5xl font-bold tracking-wide text-blue-500 mb-6">Gallery</h1>
+                <p className="text-lg text-gray-400">A collection of our best moments, achievements, and memories.</p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-16">
                     {
                         galleryImages.map((image) => (
-                            <div key={image.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-slate-200">
+                            <div key={image.id} className="bg-white hover:shadow-xl rounded-lg overflow-hidden shadow-gray-200 border border-neutral-200 hover:border-stone-300">
                                 <div className="overflow-hidden h-60">
                                     <img src={image.imageUrl} alt={image.text}
                                         className="w-full h-60 p-4 object-cover hover:scale-110 transition-all" />

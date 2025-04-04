@@ -1,12 +1,12 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import axios from "axios";
-import Routes from "../../../../constants/Routes";
-import toast from "react-hot-toast";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { appStorage, auth } from "../../../../firebase/firebase";
-import GetImageId from "../../../../functions/GetImageId";
-import Loader from "../../../../components/Loader";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { appStorage, auth } from "../../../firebase/firebase";
+import { ChangeEvent, FormEvent, useState } from "react";
+import GetImageId from "../../../functions/GetImageId";
+import Loader from "../../../components/Loader";
+import Routes from "../../../constants/Routes";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const Alumni_Register = () => {
     const [formData, setFormData] = useState({

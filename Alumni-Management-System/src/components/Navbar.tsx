@@ -1,6 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useStudent } from '../context/StudentContext';
 import { useAlumni } from '../context/AlumniContext';
+import { ImProfile } from 'react-icons/im';
+import { GiRamProfile } from 'react-icons/gi';
+import { RiProfileLine } from 'react-icons/ri';
+import { BiUser, BiUserCircle } from 'react-icons/bi';
 
 
 export default function Navbar() {
@@ -18,12 +22,13 @@ export default function Navbar() {
 
                 <div className="items-center justify-between hidden md:flex" >
                     <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg gap-1 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
-                        <Link to="/" className={`block py-1 px-4 ${pathname.endsWith("/") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>Home</Link>
-                        <Link to="/posts" className={`block py-1 px-4 ${pathname.includes("/posts") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>Posts</Link>
-                        <Link to="/event" className={`block py-1 px-4 ${pathname.endsWith("/event") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>Event</Link>
-                        <Link to="/about" className={`block py-1 px-4 ${pathname.endsWith("/about") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>About</Link>
-                        <Link to="/gallery" className={`block py-1 px-4 ${pathname.endsWith("/gallery") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>Gallery</Link>
-                        <Link to="/contact" className={`block py-1 px-4 ${pathname.endsWith("/contact") ? "text-blue-700" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-700`}>Contact</Link>
+                        <Link to="/" className={`block py-1 px-4 ${pathname.endsWith("/") ? "text-blue-600" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-600`}>Home</Link>
+                        <Link to="/alumni" className={`block py-1 px-4 ${pathname.includes("/alumni") ? "text-blue-600" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-600`}>Alumni</Link>
+                        <Link to="/posts" className={`block py-1 px-4 ${pathname.includes("/posts") ? "text-blue-600" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-600`}>Posts</Link>
+                        <Link to="/event" className={`block py-1 px-4 ${pathname.endsWith("/event") ? "text-blue-600" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-600`}>Event</Link>
+                        <Link to="/gallery" className={`block py-1 px-4 ${pathname.endsWith("/gallery") ? "text-blue-600" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-600`}>Gallery</Link>
+                        {/* <Link to="/about" className={`block py-1 px-4 ${pathname.endsWith("/about") ? "text-blue-600" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-600`}>About</Link> */}
+                        {/* <a href="/contact" className={`block py-1 px-4 ${pathname.endsWith("/contact") ? "text-blue-600" : "text-gray-900"} rounded-sm hover:bg-gray-100 md:hover:text-blue-600`}>Contact</a> */}
                     </ul>
                 </div>
                 <div className="">
@@ -42,9 +47,12 @@ export default function Navbar() {
                                     <p className='text-xs'>{alumni.email}</p>
                                 </Link>
                             </div> :
-                                <Link to={"/auth/student/login"}>
-                                    <button className='bg-blue-600 font-semibold text-white rounded-md px-6 py-1.5'>Login</button>
-                                </Link>
+                                <a href={"/user/profile/student?page=student-login"}>
+                                    <button className='bg-blue-600 flex gap-2 items-center cursor-pointer font-semibold text-white rounded-md px-4 py-1.5'>
+                                        <span>Profile</span>
+                                        <BiUserCircle size={25} />
+                                    </button>
+                                </a>
                     }
                 </div>
             </div>

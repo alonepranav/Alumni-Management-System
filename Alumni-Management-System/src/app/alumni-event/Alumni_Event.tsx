@@ -29,14 +29,13 @@ export default function Events() {
                 setLoading(false);
             }
         }
-
         CachedData();
         fetchEvents();
     }, []);
 
     return (
         <div className="min-h-screen w-screen py-24 px-2 md:px-20">
-            <h2 className="text-3xl font-medium text-center mb-10">Upcoming Events</h2>
+            <h2 className="text-4xl text-blue-500 font-bold tracking-wide text-center mb-10">Upcoming Events</h2>
 
             {
                 loading && <div className="flex justify-center items-center gap-3 my-20">
@@ -44,6 +43,7 @@ export default function Events() {
                     <p className="text-xl font-semibold">Getting posts ...</p>
                 </div>
             }
+
             <div className="flex flex-wrap gap-6 items-start flex-col md:px-60">
                 {[...events].reverse().map((event, i) => <EventBox event={event} key={i} />)}
             </div>

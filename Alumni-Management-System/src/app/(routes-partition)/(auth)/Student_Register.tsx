@@ -1,13 +1,14 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { appStorage, auth } from "../../../../firebase/firebase";
-import GetImageId from "../../../../functions/GetImageId";
-import Loader from "../../../../components/Loader";
-import Routes from "../../../../constants/Routes";
+import { appStorage, auth } from "../../../firebase/firebase";
+import GetImageId from "../../../functions/GetImageId";
+import Loader from "../../../components/Loader";
+import Routes from "../../../constants/Routes";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import axios from "axios";
+import { AuthSection_Type } from "../../../Auth_Layout";
 
 
 export default function Student_Register() {

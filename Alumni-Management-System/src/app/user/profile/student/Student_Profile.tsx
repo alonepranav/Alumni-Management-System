@@ -1,8 +1,8 @@
-import Alumni_Update_Profile_Photo from '../../../../components/User_Update_Profile_Photo';
 import { useStudent } from '../../../../context/StudentContext';
 import Loader from '../../../../components/Loader';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import User_Update_Profile_Photo from '../../../../components/User_Update_Profile_Photo';
 
 
 export default function Student_Profile() {
@@ -20,7 +20,7 @@ export default function Student_Profile() {
     <div className='flex justify-center items-center min-h-screen py-28'>
 
       {
-        updatePhoto ? <Alumni_Update_Profile_Photo {...{
+        updatePhoto ? <User_Update_Profile_Photo {...{
           name: student.name, email: student.email, profilePhoto: student.profileImage, setUpdatePhoto,
           type: "student"
         }} /> : null

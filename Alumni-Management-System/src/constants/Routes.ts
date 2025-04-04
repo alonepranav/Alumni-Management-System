@@ -17,6 +17,8 @@ const Routes = {
     Alumni_GetData: (email: string) => BACKEND + `/api/v1/alumni/utils/get-data/${email}`,
     Alumni_Update_Profile: () => BACKEND + "/api/v1/alumni/utils/update-profile",
 
+    Alumni_Get_All_Alumni: () => BACKEND + `/api/v1/alumni/utils/get-all-alumni`,
+
     Admin_Login: () => BACKEND + "/api/v1/auth/admin/login",
 
     Get_Posts: () => BACKEND + '/api/v1/posts/get-posts',

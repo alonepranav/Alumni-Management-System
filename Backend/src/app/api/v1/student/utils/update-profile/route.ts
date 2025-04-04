@@ -1,9 +1,9 @@
-import Alumni from "../../../../../../models/Alumni.model";
+import Student_Model from "../../../../../../models/Student.model";
 import { Request, Response } from "express";
 
 
-export default async function Alumni_Update_Profile(req: Request, res: Response) {
-    const { email, name, batch, company, designation, linkedin, bio, achievements } = req.body;
+export default async function Student_Update_Profile(req: Request, res: Response) {
+    const { email, name, batch, linkedin, bio, interests } = req.body;
 
     if (!email) {
         res.status(200).json({ success: false, message: "Email is required" });
@@ -11,9 +11,9 @@ export default async function Alumni_Update_Profile(req: Request, res: Response)
     }
 
     try {
-        const updatedAlumni = await Alumni.updateOne(
+        const updatedAlumni = await Student_Model.updateOne(
             { email },
-            { $set: { name, batch, company, designation, linkedin, bio, achievements } },
+            { $set: { name, batch, linkedin, bio, interests } },
             { new: true }
         );
 

@@ -1,19 +1,15 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useState } from "react";
-import { auth } from "../../../../firebase/firebase";
-import axios from "axios";
-import Routes from "../../../../constants/Routes";
-import toast from "react-hot-toast";
-import Loader from "../../../../components/Loader";
-import { useAlumni } from "../../../../context/AlumniContext";
+import { useAlumni } from "../../../context/AlumniContext";
+import { auth } from "../../../firebase/firebase";
+import Loader from "../../../components/Loader";
 import { useNavigate } from "react-router-dom";
-
+import Routes from "../../../constants/Routes";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Alumni_Login() {
-    const [formData, setFormData] = useState({
-        email: "", password: "",
-    });
-
+    const [formData, setFormData] = useState({ email: "", password: "" });
     const [loading, setLoading] = useState(false);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
@@ -21,6 +17,7 @@ export default function Alumni_Login() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
     const { setAlumni } = useAlumni();
 
     const loginWithGoogle = async () => {
@@ -58,11 +55,11 @@ export default function Alumni_Login() {
             setLoading(false);
         }
     };
-    
-    
+
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         try {
             setLoading(true);
             const re = await axios.post(Routes.Alumni_Login(), {
@@ -95,9 +92,9 @@ export default function Alumni_Login() {
 
     return (
         <div className="flex h-screen w-screen justify-center items-center">
-            <section className="bg-white flex flex-col">
-                <div className="flex justify-center items-center flex-grow py-12">
-                    <div className="relative border border-slate-200 rounded-xl p-8 w-full md:w-[40rem] shadow-xl shadow-slate-300">
+            <div className="flex justify-center items-center flex-grow ">
+                <div className="bg-gradient-to-b from-rose-500 via-orange-500 to-amber-400 p-2 rounded-2xl shadow-xl shadow-slate-300">
+                    <div className="relative border border-slate-200 rounded-xl p-8 w-full md:w-[40rem] bg-white">
                         {
                             loading ? <div className="absolute left-0 z-20 h-full w-full flex justify-center items-center bg-black/35 rounded-xl top-0">
                                 <Loader color="white" />
@@ -141,7 +138,7 @@ export default function Alumni_Login() {
 
                             <p className="text-sm text-center mt-4">
                                 Don't have an account?{" "}
-                                <a href="/auth/alumni/register" className="text-blue-500 hover:underline">
+                                <a href="?page=alumni-signin" className="text-blue-500 hover:underline">
                                     Create an account
                                 </a>
                             </p>
@@ -153,20 +150,14 @@ export default function Alumni_Login() {
                             <div className="flex-grow h-px bg-gray-300"></div>
                         </div>
 
-                        <button
-                            onClick={loginWithGoogle}
-                            className="w-full flex items-center justify-center gap-2 border border-slate-300 py-2 rounded-full hover:bg-gray-50"
-                        >
-                            <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG5FqrS9OkN5XrA5_GXcN7OV-SoLIl0KPwoQ&s"
-                                alt="Google"
-                                className="h-5"
-                            />
+                        <button onClick={loginWithGoogle} className="w-full flex items-center justify-center gap-2 border border-slate-300 py-2 rounded-full hover:bg-gray-50">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG5FqrS9OkN5XrA5_GXcN7OV-SoLIl0KPwoQ&s"
+                                alt="Google" className="h-5" />
                             Continue with Google
                         </button>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
     );
 }

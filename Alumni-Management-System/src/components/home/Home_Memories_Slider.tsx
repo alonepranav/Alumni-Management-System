@@ -2,8 +2,8 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import Slider from "react-slick";
 
-export default function Memories() {
 
+export default function Home_Memories_Slider() {
     const settings = {
         dots: true,
         infinite: true,
@@ -11,10 +11,10 @@ export default function Memories() {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 2000,
     };
 
-    const images = ["/home/r.jpg", "/home/n.jpg", "/home/m.jpg", "/google.png", "/home/r.jpg", "/home/r.jpg", "/home/r.jpg"]
+    const images = ["/slider/s1.webp", "/slider/s2.webp"]
 
     return (
         <div className="py-12">
